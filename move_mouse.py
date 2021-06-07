@@ -14,6 +14,8 @@ def get_screenshot():
 # click on imgae or target location
 def click(foo):
     pyautogui.click(foo) # find location of image and click it, error if fails
+    wait()
+    pyautogui.moveTo(10,10) # move mouse to a location where it won't block anything
 
 # depricated
 def click_here(foo):
@@ -29,23 +31,23 @@ def click_here(foo):
 
 # find cordintates of picture
 def find(foo):
-    if pyautogui.locateOnScreen(foo) == None:
+    if pyautogui.locateOnScreen(foo) == None: # if picture not found, wait 1 second and retry
         wait(1)
         find(foo)
     else:
         print(foo, "located")
 
-# wait x seconds
-def wait(x):
+# wait x seconds, default is 1 second
+def wait(x = 1):
     print("waiting for ", x, "seconds")
     time.sleep(x)
 
 # code start here
 print("\nmove_mouse start\n")
 
-# signing in to netx360
-click('netx360.png')
-find('netx_login.png')
+### signing in to netx360 ###
+#click('netx360.png')# no longer working, so depricated
+find('netx_logo.png')
 click('netx_robo.png')
 wait(3) # waiting for roboform to fill credentials
 click('cont.png')
