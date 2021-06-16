@@ -13,8 +13,9 @@ def get_screenshot():
 
 # click on imgae or target location
 def click(foo):
+    get_screenshot()
     pyautogui.click(foo) # find location of image and click it, error if fails
-    wait()
+    wait(1)
     pyautogui.moveTo(10,10) # move mouse to a location where it won't block anything
 
 # depricated
@@ -74,16 +75,11 @@ find('next1.png')
 click('next1.png')
 
 # generate report
-while True:
-    find('generate.png')
-    click('generate.png')
-    click('csv.png')
-    # if the button got succesfully clicked
-    if pyautogui.locateOnScreen('generate.png') == None:
-        break
+find('generate.png')
+click('generate.png')
+click('csv.png')
 
 # waiting for csv file to be created
-
 
 print("\nmove_mouse end")
 
